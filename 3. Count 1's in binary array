@@ -1,0 +1,32 @@
+//https://practice.geeksforgeeks.org/problems/count-1s-in-binary-array-1587115620/1/?track=DSASP-Searching&batchId=263#
+
+
+int lastOcc(int arr[],int n){
+    int start=0;
+    int last=n;
+    while(start<=last){
+        int mid=(start+last)/2;
+        if(arr[mid]==1){
+            if(mid==n-1 || arr[mid]!=arr[mid+1]){
+                return mid;
+            }else{
+                start=mid+1;
+            }
+        }
+        
+        if(arr[mid]<1){
+            last=mid-1;
+        }else{
+            start=mid+1;
+        }
+    }
+    return -1;
+}
+int countOnes(int arr[], int N)
+{
+    
+   //find last occureence of 1 the return mid+1;
+   int lastind= lastOcc(arr,N);
+   return lastind+1;
+    
+}
